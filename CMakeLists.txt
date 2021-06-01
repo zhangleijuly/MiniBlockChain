@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.0)
+project(MiniBlockChain)
+set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O2 -pthread -fopenmp")
+
+include_directories(${PROJECT_SOURCE_DIR}/include)
+aux_source_directory(./src BlockChain)
+aux_source_directory(./src/Ecdsa Ecdsa)
+aux_source_directory(./src/Ecdsa/hash Hash)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+add_executable(test ${BlockChain} ${Ecdsa} ${Hash})
